@@ -32,6 +32,7 @@ class Tools(models.Model):
 			
 class Project(models.Model):
 	logo = models.ImageField(upload_to="./client-logos/", blank=True)
+	banner = models.ImageField(upload_to="./client-banners/", blank=True)
 	title = models.CharField(max_length=250, blank=True)
 	slug = models.SlugField(unique=True)
 	date = models.DateField(auto_now=True)
