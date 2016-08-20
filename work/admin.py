@@ -1,9 +1,9 @@
 from django.contrib import admin
 from work.models import Pieces, Services, Tools, Project
 
-class PiecesInline(admin.TabularInline):
+class PiecesInline(admin.StackedInline):
 	model = Pieces
-	extra = 10
+	extra = 5
 	
 class ProjectAdmin(admin.ModelAdmin):
 	inlines = [

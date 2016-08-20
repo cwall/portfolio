@@ -2,7 +2,7 @@ from django.contrib import admin
 from page.models import Pages, Section
 class SectionInline(admin.StackedInline):
     model = Section
-    extra = 10
+    extra = 3
 
 class PagesAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'slug': ('title',)}
