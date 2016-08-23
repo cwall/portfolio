@@ -1,0 +1,27 @@
+{% extends "work/base.html" %}
+		{% block meta_tags %}{{ pages.meta }}{% endblock %}
+		{% block main_title %}Talentocracy: {{pages.title}}{% endblock %}
+		{% block main_content %}
+		<div id="talentocracy-pages">
+			<section class="work-wrap">
+				<div class="container">
+					<div class="row">
+						<div class="span12">
+							<div class="main-title">
+								<h2>{{page.title}}</h2>
+								<h3>{{ page.subtitle }}</h3>
+							</div>
+						</div>
+						
+						<div class="span12">
+							<div class="pages">
+								<div class="pages-body">
+									<p>{{ page.content|safe }}</p>
+								</div>							
+							</div>
+						</div>						
+					</div>									
+				</div>
+			</section>
+		</div>
+		{% endblock %}

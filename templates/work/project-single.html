@@ -1,0 +1,42 @@
+{% extends "work/base.html" %}
+{% load static from staticfiles %}
+{% load i18n %}
+		{% block meta_tags %}{{ project.meta }}{% endblock %}
+		{% block main_title %}{{project.title}}{% endblock %}
+		{% block main_content %}
+		<div id="talentocracy-project">
+			<section class="work-wrap">
+				<div class="container">
+					<div class="row">
+						<div class="span12">
+							<div class="main-title">
+								<h2>{{project.title}}</h2>
+								<h3>{{ project.serives }}</h3>
+							</div>
+						</div>
+						
+						<div class="span12">
+							<div class="project">
+								<div class="project-body">
+									<p>{{ project.content|safe }}</p>
+									{% if project.url %}
+									<p><a href="{{ project.url }}" class="cta">View live site</a></p>
+									{% endif %}
+								</div>
+								
+								<div class="project-samples">
+									<ul class="unstyled">
+										{% for piece in project.pieces_set.all %}
+										<li class="project-piece"><img src="/media/{{piece.images}}" alt="{{piece.title}}" /></li>
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+						</div>						
+					</div>									
+				</div>
+			</section>
+			
+			{% include 'work/contact.html' %}
+		</div>
+		{% endblock %}		

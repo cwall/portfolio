@@ -1,0 +1,100 @@
+{% extends "work/base.html" %}	
+{% load static from staticfiles %}
+{% load i18n %}
+
+{% block main_content%}	
+		<div id="talentocracy-hp">
+      {% comment %}
+			<section id="about" class="hero-space">
+				<div class="container">
+					<div class="row">
+						<div class="span12">
+							<h1>Designer.<br>Coder.<br>Illustrator.<br>Man.</h1>
+						</div>
+
+						<div class="span12">
+							<p>Talentocracy is the brainchild of Carl Waldron. Designer, Developer, Illustrator, Man. Take a moment and rummage through my works. If you are in need of any of the things listed above, please don't hesitate to <a href="#contact">contact me</a>.</p>
+							<a href="#contact" class="cta">Hire Carl!</a>
+						</div>
+					</div>
+				</div>	
+			</section>
+			{% endcomment %}
+			<section id="work" class="work-wrap">
+				<div class="container">
+					<div class="row">
+						<div class="span12">
+							<div class="main-title">
+								<!-- <h2>My Work</h2> -->
+								<h3>The work of Carl Waldron</h3>
+							</div>
+						</div>						
+					</div>	
+					
+					<div class="row">
+						{% for projects in projects %}
+						<div class="span4">
+							<ul class="work-list">
+								<li class="sample">
+									<a href="{{ projects.get_absolute_url}}">
+									{% if projects.logo %}
+										<img src="/media/{{ projects.logo }}" alt="{{ projects.client.title }}: {{ projects.title }}" width="300" height="225" />
+									{% else %}
+										<img src="img/work-place.png" alt="{{ projects.client.title }}: {{ projects.title }}" width="300" height="225" />
+									{% endif %}
+									</a>
+								</li>
+								<li class="info">
+								  <a href="{{ projects.get_absolute_url}}">
+								    <span>{{ projects.title }}</span>
+								  </a>
+								</li>
+								
+							</ul>
+						</div>
+						
+						{% empty %}
+							<h3>No work yet</h3>
+						{% endfor %}
+					</div>								
+				</div>
+			</section>
+			
+			<section id="services" class="services-wrap">
+				<div class="container">
+					<div class="row">
+						<div class="span12">
+							<div class="main-title">
+								<h2>Services</h2>
+								<h3>I offer multiple services to my clients</h3>
+							</div>
+						</div>
+						
+						<div class="span4">
+							<div class="services">
+								<img src="{% static "img/services-design.png" %}" alt="Talentocracy offers Design services" width="300" height="300" />
+								<p>Using my high-tech, computer enhanced, creatively focused brain, I will craft your brand or website or coffee mug with the utmost care and efficiency. I care about everything I do, so you can be sure I will deliver some we both believe in. </p>
+							</div>
+						</div>
+
+						<div class="span4">
+							<div class="services">
+								<img src="{% static "img/services-development.png" %}" alt="Talentocracy offers Web Development services" width="300" height="300" />
+								<p>Using the same space age technology that put man on the moon and Coca-Cola in vending machines, I create websites. How you ask? By writing validated, semantic code. HTML5, CSS3, JQuery, Django, Wordpress. I do it all. To top it off, all my websites work on The Internet&reg;, and that's a Carl Guarantee!</p>
+							</div>
+						</div>
+						
+						<div class="span4">
+							<div class="services">
+								<img src="{% static "img/services-illustration.png" %}" alt="Talentocracy offers Illustration services" width="300" height="300" />
+								<p>Drawing is my lifelong passion. I use it to express certain feelings in my everyday life. Such as hunger, or indifference. It also comes in handy when designing as it enhances the personality I put into my work. Be it a logo, a character or a rough sketch of me driving a go kart, you can be sure there is a little of me in everything I do.</p>
+							</div>
+						</div>						
+					</div>
+				</div>
+			</section>
+			
+      {% include 'work/contact.html' %}
+		</div>
+		
+{% endblock %}
