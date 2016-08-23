@@ -1,8 +1,10 @@
 from django.conf.urls import url
 from django.contrib import admin
+from work.views import project_list
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', project_list, name="project_list"),
 ]
 
 # urlpatterns += patterns('portfolio.work.views',
