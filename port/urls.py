@@ -1,24 +1,20 @@
 from django.conf.urls import url
 from django.contrib import admin
-from work.views import project_list
+from work import views as work_views
+from page import views as page_views
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', project_list, name="project_list"),
+    url(r'^$', work_views.project_list, name="project_list"),
+	# url(r'^$', work_views.project_list, name='project_list'),
+	url(r'^project/(?P<projectslug>.*)/$', work_views.project_page, name='project_page'),
+	url(r'^(?P<pageslug>.*)/$', page_views.page_detail, name='page'),
 ]
-
-# urlpatterns += patterns('portfolio.work.views',
-# 	url(r'^$', 'project_list', name='project_list'),
-# 	url(r'^project/(?P<projectslug>.*)/$', 'project_page', name='project_page'),
-# )
-# urlpatterns += patterns('portfolio.pages.views',
-# 	url(r'^(?P<pageslug>.*)/$', 'page_detail', name='page'),
-# )
-# urlpatterns += patterns('portfolio.contact.views',
+# urlpatterns = [
 # 	url(r'^contact/$', 'contact', name='contact'),
-# )
+# ]
 
-# #	Media URL
 # if settings.DEBUG:
 # 	urlpatterns += patterns('',
 # 		url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),

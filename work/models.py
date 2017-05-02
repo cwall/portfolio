@@ -59,14 +59,19 @@ class Pieces(models.Model):
 	images = models.ImageField(upload_to="./samples/%Y/")
 	title = models.CharField(max_length=200, blank=True)
 	slug = models.SlugField(unique=True)
-	date = models.DateField(auto_now=True)
-	project = models.ForeignKey(Project)
-	publish = models.BooleanField()
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+	body = models.TextField(max_length=140, blank=True)
+	project = models.ForeignKey(Project, blank=True)
+	publish = models.BooleanField(blank=True)
 	
 	class Meta:
 		ordering = ['title']
-		get_latest_by = 'date'
+		get_latest_by = 'updated'
 		verbose_name_plural = 'Pieces'
 		
 	def __unicode__(self):
 		return self.title
+
+	def get_absolute_url(self):
+		return "/bit/%s/" % self.slug
